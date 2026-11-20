@@ -521,8 +521,3 @@ shopsense/
 | Search results look odd after switching embedding provider | Re-index: `POST /api/admin/reindex-embeddings` as admin. |
 | Pages show old data right after re-seeding | Next.js caches API responses for up to a few minutes. Restart `pnpm dev`/`next start` or wait. |
 
----
-
-## License
-
-MIT — see [LICENSE](LICENSE).
