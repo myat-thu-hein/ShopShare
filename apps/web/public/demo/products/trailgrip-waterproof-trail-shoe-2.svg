@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="TrailGrip Waterproof Trail Shoe">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bdbdc0"/><stop offset="1" stop-color="#959598"/></linearGradient>
+    <style>
+      .p{fill:#27272a;stroke:#000000;stroke-width:8;stroke-linejoin:round}
+      .p .d{fill:#000000} .p .s{fill:#59595c;stroke:#000000}
+      .p .l{fill:none;stroke:#000000;stroke-width:10;stroke-linecap:round}
+      .p .t{fill:none;stroke:#27272a;stroke-width:42;stroke-linecap:round}
+    </style>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="400" cy="660" rx="260" ry="28" fill="#000" opacity="0.08"/>
+  <g class="p"><path d="M140 520 C140 440 220 420 270 405 L345 315 C365 290 410 292 430 318 L515 410 C600 430 680 450 690 515 L690 545 L140 545 Z"/>
+    <rect x="130" y="545" width="575" height="45" rx="20" class="d"/>
+    <path d="M360 350 l40 40 M385 330 l40 40 M335 375 l40 40" class="l"/></g>
+</svg>

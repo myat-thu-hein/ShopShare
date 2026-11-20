@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Monsoon Shell Rain Jacket">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b4d0ff"/><stop offset="1" stop-color="#8ca8f8"/></linearGradient>
+    <style>
+      .p{fill:#1e3a8a;stroke:#00004e;stroke-width:8;stroke-linejoin:round}
+      .p .d{fill:#00004e} .p .s{fill:#506cbc;stroke:#00004e}
+      .p .l{fill:none;stroke:#00004e;stroke-width:10;stroke-linecap:round}
+      .p .t{fill:none;stroke:#1e3a8a;stroke-width:42;stroke-linecap:round}
+    </style>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="400" cy="660" rx="260" ry="28" fill="#000" opacity="0.08"/>
+  <g class="p"><path d="M285 200 L360 175 L400 230 L440 175 L515 200 L600 290 L640 600 L570 610 L540 360 L530 620 L270 620 L260 360 L230 610 L160 600 L200 290 Z"/>
+    <path d="M400 230 L400 620" class="l"/></g>
+</svg>

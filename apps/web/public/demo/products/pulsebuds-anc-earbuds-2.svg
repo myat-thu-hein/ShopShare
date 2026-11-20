@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="PulseBuds ANC Earbuds">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e0e0e1"/><stop offset="1" stop-color="#c7c7c8"/></linearGradient>
+    <style>
+      .p{fill:#f4f4f5;stroke:#9a9a9b;stroke-width:8;stroke-linejoin:round}
+      .p .d{fill:#9a9a9b} .p .s{fill:#ffffff;stroke:#9a9a9b}
+      .p .l{fill:none;stroke:#9a9a9b;stroke-width:10;stroke-linecap:round}
+      .p .t{fill:none;stroke:#f4f4f5;stroke-width:42;stroke-linecap:round}
+    </style>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="400" cy="660" rx="260" ry="28" fill="#000" opacity="0.08"/>
+  <g class="p"><path d="M230 470 C230 260 570 260 570 470" fill="none" class="t"/>
+    <rect x="190" y="420" width="90" height="160" rx="40"/><rect x="520" y="420" width="90" height="160" rx="40"/></g>
+</svg>

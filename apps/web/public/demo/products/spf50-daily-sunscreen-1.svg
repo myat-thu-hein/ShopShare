@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="SPF50+ Daily Sunscreen">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f9fcff"/><stop offset="1" stop-color="#d1d4ff"/></linearGradient>
+    <style>
+      .p{fill:#6366f1;stroke:#272ab5;stroke-width:8;stroke-linejoin:round}
+      .p .d{fill:#272ab5} .p .s{fill:#9598ff;stroke:#272ab5}
+      .p .l{fill:none;stroke:#272ab5;stroke-width:10;stroke-linecap:round}
+      .p .t{fill:none;stroke:#6366f1;stroke-width:42;stroke-linecap:round}
+    </style>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="400" cy="660" rx="260" ry="28" fill="#000" opacity="0.08"/>
+  <g class="p"><path d="M300 180 L500 180 L470 560 L330 560 Z"/><rect x="345" y="560" width="110" height="70" rx="14" class="d"/>
+    <rect x="330" y="300" width="140" height="120" rx="10" class="s"/></g>
+</svg>

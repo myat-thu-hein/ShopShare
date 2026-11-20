@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Grip Yoga Mat 6mm">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#acffe0"/><stop offset="1" stop-color="#84ffb8"/></linearGradient>
+    <style>
+      .p{fill:#16a34a;stroke:#00670e;stroke-width:8;stroke-linejoin:round}
+      .p .d{fill:#00670e} .p .s{fill:#48d57c;stroke:#00670e}
+      .p .l{fill:none;stroke:#00670e;stroke-width:10;stroke-linecap:round}
+      .p .t{fill:none;stroke:#16a34a;stroke-width:42;stroke-linecap:round}
+    </style>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="400" cy="660" rx="260" ry="28" fill="#000" opacity="0.08"/>
+  <g class="p"><rect x="180" y="330" width="440" height="170" rx="85"/><ellipse cx="620" cy="415" rx="55" ry="85" class="s"/></g>
+</svg>

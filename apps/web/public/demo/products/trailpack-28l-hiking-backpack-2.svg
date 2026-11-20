@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="TrailPack 28L Hiking Backpack">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bdbdc0"/><stop offset="1" stop-color="#959598"/></linearGradient>
+    <style>
+      .p{fill:#27272a;stroke:#000000;stroke-width:8;stroke-linejoin:round}
+      .p .d{fill:#000000} .p .s{fill:#59595c;stroke:#000000}
+      .p .l{fill:none;stroke:#000000;stroke-width:10;stroke-linecap:round}
+      .p .t{fill:none;stroke:#27272a;stroke-width:42;stroke-linecap:round}
+    </style>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="400" cy="660" rx="260" ry="28" fill="#000" opacity="0.08"/>
+  <g class="p"><rect x="250" y="210" width="300" height="400" rx="70"/><rect x="300" y="420" width="200" height="140" rx="30" class="s"/>
+    <path d="M330 210 C330 140 470 140 470 210" fill="none" class="t"/></g>
+</svg>

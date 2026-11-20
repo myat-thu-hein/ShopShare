@@ -1,0 +1,102 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: 22
+  NEXT_TELEMETRY_DISABLED: 1
+
+jobs:
+  quality:
+    name: Lint, type-check, unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '${{ env.NODE_VERSION }}', cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @shopsense/shared build
+      - run: pnpm --filter @shopsense/api db:generate
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+
+  api-e2e:
+    name: API end-to-end (Postgres + Redis)
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env: { POSTGRES_USER: shopsense, POSTGRES_PASSWORD: shopsense, POSTGRES_DB: shopsense }
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U shopsense" --health-interval 5s --health-timeout 5s --health-retries 10
+      redis:
+        image: redis:7
+        ports: ['6379:6379']
+        options: >-
+          --health-cmd "redis-cli ping" --health-interval 5s --health-timeout 3s --health-retries 10
+    env:
+      DATABASE_URL: postgresql://shopsense:shopsense@localhost:5432/shopsense
+      REDIS_URL: redis://localhost:6379
+      JWT_ACCESS_SECRET: ci-access-secret-0123456789
+      JWT_REFRESH_SECRET: ci-refresh-secret-0123456789
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '${{ env.NODE_VERSION }}', cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @shopsense/shared build
+      - run: pnpm --filter @shopsense/api db:generate
+      - run: pnpm db:deploy
+      - run: pnpm db:seed
+      - run: pnpm test:e2e
+
+  web-e2e:
+    name: Build + Playwright smoke tests
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env: { POSTGRES_USER: shopsense, POSTGRES_PASSWORD: shopsense, POSTGRES_DB: shopsense }
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U shopsense" --health-interval 5s --health-timeout 5s --health-retries 10
+      redis:
+        image: redis:7
+        ports: ['6379:6379']
+    env:
+      DATABASE_URL: postgresql://shopsense:shopsense@localhost:5432/shopsense
+      REDIS_URL: redis://localhost:6379
+      JWT_ACCESS_SECRET: ci-access-secret-0123456789
+      JWT_REFRESH_SECRET: ci-refresh-secret-0123456789
+      API_URL: http://localhost:4000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '${{ env.NODE_VERSION }}', cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm db:deploy && pnpm db:seed
+      - name: Start API and web
+        run: |
+          (cd apps/api && node dist/main.js > ../../api.log 2>&1 &)
+          (cd apps/web && pnpm start > ../../web.log 2>&1 &)
+          npx wait-on -t 90000 http://localhost:4000/api/health http://localhost:3000
+      - run: pnpm --filter @shopsense/web exec playwright install --with-deps chromium
+      - run: pnpm --filter @shopsense/web test:e2e
+      - if: failure()
+        run: tail -n 100 api.log web.log
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with: { name: playwright-report, path: apps/web/playwright-report }
